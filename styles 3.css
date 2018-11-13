@@ -1,0 +1,34 @@
+a{
+    text-decoration: none;
+    text-align: center;
+    color: black;
+}
+
+form{
+    text-align: center;
+}
+
+
+
+hr{
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
+/*
+tr:nth-of-type(odd){
+    background-color:white;
+}
+tr:nth-of-type(even){
+    background-color: lightgray;
+}*/
+
+table{
+    background-color: azure;
+}
+
+body{
+    
+}
