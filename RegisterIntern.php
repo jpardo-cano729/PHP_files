@@ -93,8 +93,9 @@
         }
     }
     if ($errors == 0){
-        $first = stripslashes($_POST['first']);
-        $last = stripslashes($_POST['last']);
+        // added in the method to uppercase the first letter in the clients first and last name in case that they choose not to
+        $first = stripslashes(ucfirst($_POST['first']));
+        $last = stripslashes(ucfirst($_POST['last']));
         $SQLstring = "INSERT INTO $TableName" .
             " (first, last, email, password_md5)" .
             " VALUES('$first','$last','$email', '" .
@@ -114,9 +115,18 @@
         $internName = $first . " " . $last;
         echo "<p>Thank you, $internName.";
         echo " Your new InternID is <strong>" .
-            $internID ."</strong>.</p>\n";
-        echo "<p>Closing database connection.<p>\n";
+            $internID . "</strong>.</p>\n";
+    }
+    
+    if ($DBConnect) {
+         echo "<p>Closing database connection.<p>\n";
         mysqli_close($DBConnect);
+    }
+    if ($errors == 0) {
+        echo "<form action='AvailableOpportunities.php' method='post'>\n";
+        echo "<input type='hidden' name='internID' value='$internID'>\n";
+        echo "<input type='submit' name='submit' value='View Available Opportunities'>\n";
+        echo "</form>\n";
     }
     if ($errors > 0) {
         echo "<p>Please use your browser's BACK button" . 
