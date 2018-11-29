@@ -20,7 +20,6 @@
     $DBConnect = false;
     $DBName = "internships2";
     $TableName = "interns";
-    
     if ($errors == 0) {
         $DBConnect = mysqli_connect($hostname, $username, $passwd);
         if (!$DBConnect) {
@@ -67,10 +66,13 @@
         mysqli_close($DBConnect);
     }
     if ($errors == 0) {
-        echo "<form action='AvailableOpportunities.php' method='post'>\n";
-        echo "<input type='hidden' name='internID' value='$internID'>\n";
-        echo "<input type='submit' name='submit' value='View Available Opportunities'>\n";
-        echo "</form>\n";
+//        echo "<form action='AvailableOpportunities.php' method='post'>\n";
+//        echo "<input type='hidden' name='internID' value='$internID'>\n";
+//        echo "<input type='submit' name='submit' value='View Available Opportunities'>\n";
+//        echo "</form>\n";
+        
+        echo "<p><a href='AvailableOpportunities.php?" . 
+            "internID=$internID'>Available Opportunities</a></p>\n";
     }
     if ($errors > 0) {
         echo "<p>Please use your browser's BACK button" . 
